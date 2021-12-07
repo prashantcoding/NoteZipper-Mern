@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row,Button } from "react-bootstrap";
 import "./Lsytle.css";
+import {Link} from "react-router-dom"
 const LandingPage = () => {
   return (
     <div className="main">
@@ -12,12 +13,12 @@ const LandingPage = () => {
               <p className="subtitle">One Safe Place,For Your Notes</p>
             </div>
             <div className="buttonContainer">
-            <a href="/login">
+            <Link to ="/login">
               <Button size="lg" className='landingbutton'>Login</Button>
-            </a>
-            <a href="/register" >
+            </Link>
+            <Link to ="/register" >
               <Button size="lg" className='landingbutton' variant='outline-primary'>SignUp</Button>
-            </a>
+            </Link>
           </div>
           </div>
          
