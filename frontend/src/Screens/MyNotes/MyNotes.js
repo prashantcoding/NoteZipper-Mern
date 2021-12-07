@@ -1,11 +1,18 @@
-import React from 'react'
-
+import React from "react";
+import MainScreen from "../../component/MainScreen/MainScreen";
+import {Link} from 'react-router-dom'
+import {Button} from 'react-bootstrap'
 const MyNotes = () => {
-    return (
-        <div>
-           <h1>Notes</h1>
-        </div>
-    )
-}
+  return (
+  <MainScreen title="Welcome Back Prashant">
+    <Link to="/createnewnode">
+        <Button style={{marginLeft: 10,marginBottom: 6}} size='lg'>
+            Create New Note
+        </Button>
 
-export default MyNotes
+    </Link>
+
+    </MainScreen>
+  )};
+
+export default MyNotes;
