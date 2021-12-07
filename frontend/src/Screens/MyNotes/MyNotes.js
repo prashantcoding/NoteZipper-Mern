@@ -1,7 +1,7 @@
 import React from "react";
 import MainScreen from "../../component/MainScreen/MainScreen";
 import { Link } from "react-router-dom";
-import { Badge, Button, Card } from "react-bootstrap";
+import { Accordion, Badge, Button, Card } from "react-bootstrap";
 import notes from "../../data/notes";
 
 const MyNotes = () => {
@@ -16,32 +16,39 @@ const MyNotes = () => {
         Create New Note
       </Button>
       </Link>
+      
       {notes.map((note) => (
-        <Card style={{ margin: 10 }}>
-          <Card.Header style={{ display: "flex" }}>
+        <Accordion>
+           <Accordion.Item eventKey="0">
+            
+            <Accordion.Header>
             <span
-              style={{
-                color: "black",
-                textDecoration: "none",
-                flex: 1,
-                cursor: "pointer",
-                alignSelf: "center",
-                fontSize: 18,
-              }}
-            >
-              {note.title}
-            </span>
-            <div>
-              <Button href={`/node/${note._id}`}>Edit</Button>
-              <Button
-                variant="danger"
-                className="mx-2"
-                onClick={() => deleteHandler(note._id)}
-              >
-                Delete
-              </Button>
-            </div>
-          </Card.Header>
+             style={{
+               color: "black",
+               textDecoration: "none",
+               flex: 1,
+               cursor: "pointer",
+               alignSelf: "center",
+               fontSize: 18,
+             }}
+           >
+             {note.title}
+           </span>
+           
+             <Button href={`/node/${note._id}`}>Edit</Button>
+             <Button
+               variant="danger"
+               className="mx-2"
+               onClick={() => deleteHandler(note._id)}
+             >
+               Delete
+             </Button>
+           
+         
+         
+            </Accordion.Header>
+          
+          <Accordion.Body>
           <Card.Body >
           <h4>
                       <Badge bg="success">
@@ -57,7 +64,12 @@ const MyNotes = () => {
               </footer>
             </blockquote>
           </Card.Body>
-        </Card>
+          </Accordion.Body>
+         
+        
+        </Accordion.Item>
+        </Accordion>
+        
       ))}
     </MainScreen>
   );
