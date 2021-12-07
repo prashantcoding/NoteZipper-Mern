@@ -4799,12 +4799,12 @@
  }
  .badge-primary {
    color: #fff;
-   background-color: #158cba;
+   ;
  }
  a.badge-primary:focus,
  a.badge-primary:hover {
    color: #fff;
-   background-color: #106a8c;
+   ;
  }
  a.badge-primary.focus,
  a.badge-primary:focus {
