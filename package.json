@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  
   "scripts": {
     "start": "nodemon backend/server.js",
     "client": "npm start --prefix frontend",
@@ -12,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.4.0",
     "dotenv": "^10.0.0",
