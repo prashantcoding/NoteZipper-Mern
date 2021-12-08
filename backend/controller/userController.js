@@ -21,6 +21,7 @@ const registerUser=asyncHandler(async(req,res)=>{
     }
 });
 const authUser=asyncHandler(async(req,res)=>{
+    console.log("ITS HERE GOT IT")
     const{password,email}=req.body;
     const user=await User.findOne({email});
     if(user && (await user.matchPassword(password))){
