@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row,Button } from "react-bootstrap";
 import "./Lsytle.css";
 import {Link} from "react-router-dom"
 const LandingPage = () => {
+  // useEffect(() => {
+  //   const userInfo = localStorage.getItem("userinfo");
+  //   console.log(userInfo);
+  //   if (userInfo) {
+  //     history.push("/mynotes");
+  //   }
+  // }, []);
   return (
     <div className="main">
       <Container>

@@ -1,40 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MainScreen from "../../component/MainScreen/MainScreen";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./loginS.css";
 import Loading from "../../component/Loading/Loading";
 import ErrorMessage from "../../component/errorMessage/ErrorMessage";
-const axios = require('axios');
-const LoginScreen = () => {
+const axios = require("axios");
+const LoginScreen = ({ history }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
- const [message,SetMessage] = useState(false);
-  const submitHandler =async (e) => {
+  const [message, SetMessage] = useState(false);
+  useEffect(() => {
+    const userInfo = localStorage.getItem("userinfo");
+    console.log(userInfo);
+    if (userInfo) {
+      history.push("/mynotes");
+    }
+  }, []);
+  const submitHandler = async (e) => {
     e.preventDefault();
     try {
-        const config={
-            headers: { 'Content-Type': 'application/json'}
-        }
-        setLoading(true)
-        const {data} = await axios.post('/api/users/login',{
-            email,password
-        },config)
+      const config = {
+        headers: { "Content-Type": "application/json" },
+      };
+      setLoading(true);
+      const { data } = await axios.post(
+        "/api/users/login",
+        {
+          email,
+          password,
+        },
+        config
+      );
       console.log(data);
-      setLoading(false)
+      localStorage.setItem("userinfo", JSON.stringify(data));
+      setLoading(false);
     } catch (error) {
-        SetMessage(error.response.data.message);
-        console.log(message);
-        setLoading(false)
+      SetMessage(error.response.data.message);
+      console.log(message);
+      setLoading(false);
     }
-    
   };
   return (
     <MainScreen title="LOGIN">
       <div className="loginContainer">
-          {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
-          {loading && <Loading/>}
+        {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
+        {loading && <Loading />}
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
