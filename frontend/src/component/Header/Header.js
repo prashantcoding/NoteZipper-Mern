@@ -7,8 +7,9 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 const Header = () => {
+  const history=useHistory()
   return (
     <div>
       <Navbar bg="primary" expand="lg" variant="dark">
@@ -34,7 +35,10 @@ const Header = () => {
                 <NavDropdown.Item href="">My profile</NavDropdown.Item>
 
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#">
+                <NavDropdown.Item onClick={()=>{
+                  localStorage.removeItem('userinfo')
+                  history.push('/')
+                }}>
                 LogOut
                 </NavDropdown.Item>
               </NavDropdown>
