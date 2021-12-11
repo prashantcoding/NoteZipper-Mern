@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MainScreen from "../../component/MainScreen/MainScreen";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -11,13 +11,7 @@ const LoginScreen = ({ history }) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [message, SetMessage] = useState(false);
-  useEffect(() => {
-    const userInfo = localStorage.getItem("userinfo");
-    console.log(userInfo);
-    if (userInfo) {
-      history.push("/mynotes");
-    }
-  }, []);
+ 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
